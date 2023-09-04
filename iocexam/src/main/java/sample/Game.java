@@ -6,10 +6,14 @@ public class Game {
 	
 	private List<Player> list;
 	
-//	public Game(List<Player> list) {
-//		this.list = list;
-//	}
-//	
+	public Game() {
+		
+	}
+	
+	public Game(List<Player> list) {
+		this.list = list;
+	}
+	
 	public void setPlayerList(List<Player> list) {
 		this.list = list;
 	}

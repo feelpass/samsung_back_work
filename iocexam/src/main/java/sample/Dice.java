@@ -8,6 +8,10 @@ public class Dice {
 		this.face = face;
 	}
 	
+//	public void setFace(int face) {
+//		this.face = face;
+//	}
+	
 	public int getNumber() {
 		return (int)(Math.random()*face) + 1;
 	}

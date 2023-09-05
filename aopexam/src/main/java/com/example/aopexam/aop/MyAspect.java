@@ -1,9 +1,12 @@
 package com.example.aopexam.aop;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -56,6 +59,26 @@ public class MyAspect {
 		product.setName("new Pen!!!");
 		
 		System.out.println("@AfterReturning end!!!");
+	}
+	
+	@AfterThrowing(value = "pc2()", throwing = "ex")
+	public void afterThrowing(Throwable ex) {
+		System.out.println("#############@AfterThrowing 예외가 발생 했을 경우에만 동작해요.");
+		System.out.println("예외발생::::::::::::::"+ex);
+	}
+	
+	@Around("pc2()")
+	public Product around(ProceedingJoinPoint pjp) throws Throwable{
+		System.out.println("#############@@Around 메소드가 실행되기 전에 동작!!");
+		
+		
+		Product product	=(Product)pjp.proceed();  //핵심관심으로 흐름을 넘겨줌. 
+		
+		System.out.println("#############@@Around 메서드가 실행된 후에 동작");
+		
+		product.setPrice(product.getPrice() - 1000 );
+		
+		return product;
 	}
 	
 }

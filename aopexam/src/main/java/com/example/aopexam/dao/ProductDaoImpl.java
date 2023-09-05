@@ -20,6 +20,10 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public Product findProduct(String name) {
 		System.out.println("productDao findProduct start!!");
+		
+//		if(1==1)
+//			throw new RuntimeException();
+		
 		return storeage.get(name);
 	}
 

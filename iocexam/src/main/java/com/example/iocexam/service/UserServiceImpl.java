@@ -19,9 +19,9 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	
-//	public UserServiceImpl(UserDao caramiDAO) {
-//		this.userDao = caramiDAO;
-//	}
+	public UserServiceImpl(UserDao caramiDAO) {
+		this.userDao = caramiDAO;
+	}
 	@Autowired
 	@Qualifier("userDaoImpl")
 	public void setUserDao(UserDao userDao) {

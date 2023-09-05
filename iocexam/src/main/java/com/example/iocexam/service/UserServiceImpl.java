@@ -1,11 +1,18 @@
 package com.example.iocexam.service;
 
+import org.springframework.stereotype.Service;
+
 import com.example.iocexam.dao.UserDao;
 import com.example.iocexam.domain.User;
 
+@Service
 public class UserServiceImpl implements UserService {
 	
 	private UserDao userDao;
+	
+	public UserServiceImpl(UserDao userDao) {
+		this.userDao = userDao;
+	}
 
 	@Override
 	public void joinUser(User user) {

@@ -2,8 +2,10 @@ package com.example.iocexam.dao;
 
 import java.util.List;
 
-import com.example.iocexam.domain.User;
+import org.springframework.stereotype.Repository;
 
+import com.example.iocexam.domain.User;
+@Repository
 public class UserDaoImpl implements UserDao {
 
 	@Override

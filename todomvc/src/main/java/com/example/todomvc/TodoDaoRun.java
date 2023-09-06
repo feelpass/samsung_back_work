@@ -1,10 +1,13 @@
 package com.example.todomvc;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.example.todomvc.config.ApplicationConfig;
 import com.example.todomvc.dao.TodoDao;
+import com.example.todomvc.domain.Todo;
 
 public class TodoDaoRun {
 
@@ -14,7 +17,17 @@ public class TodoDaoRun {
 		TodoDao todoDao = context.getBean(TodoDao.class);
 		
 		
-		todoDao.insertTodo("운동가자!!");
+//		todoDao.insertTodo("운동가자!!");
+	
+//		List<Todo> todos =	todoDao.getTodos();
+//		
+//		for (Todo todo : todos) {
+//			System.out.println(todo);
+//		}
+		
+		System.out.println(todoDao.getTodo(1L));
+	
 	}
+	
 
 }

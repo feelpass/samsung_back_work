@@ -18,7 +18,10 @@
 <hr>
 	<c:forEach items="${ todoList }" var="todo">
 		<p>
-			${ todo.todo}
+		<c:if test="${todo.done }">완료!!</c:if>
+		<c:if test="${!todo.done }">진행중 .........   </c:if>
+			<a href="update?id=${todo.id }">	${ todo.todo} </a>   &nbsp &nbsp
+			<a href="delete?id=${todo.id }">삭제</a>
 		</p>
 	</c:forEach>
 </body>

@@ -18,14 +18,26 @@ public class TodoDaoRun {
 		
 		
 //		todoDao.insertTodo("운동가자!!");
-	
+		
+//		todoDao.deleteTodo(5L);
+//	
 //		List<Todo> todos =	todoDao.getTodos();
 //		
 //		for (Todo todo : todos) {
 //			System.out.println(todo);
 //		}
+//		
+//		
+//		
+//		System.out.println("수정전!!"+todoDao.getTodo(1L));
+//		Todo todo = todoDao.getTodo(1L);
+//		todo.setDone(!todo.isDone());
+//		
+//		todoDao.updateTodo(todo);
+//		
+//		System.out.println("수정후!!"+todoDao.getTodo(1L));
 		
-		System.out.println(todoDao.getTodo(1L));
+		System.out.println(todoDao.addTodo("spring jdbc study!!"));
 	
 	}
 	

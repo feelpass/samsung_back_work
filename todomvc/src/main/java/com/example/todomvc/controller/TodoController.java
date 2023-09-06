@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.todomvc.domain.Todo;
@@ -28,6 +29,11 @@ public class TodoController {
 		return "list";
 	}
 	
-	
+	@PostMapping("/add")
+	public String add(String todo) {
+		todoService.addTodo(todo);
+		
+		return "redirect:/todo/list";
+	}
 
 }

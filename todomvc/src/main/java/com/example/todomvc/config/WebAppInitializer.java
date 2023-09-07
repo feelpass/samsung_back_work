@@ -14,7 +14,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return  new Class<?>[] {MvcConfig.class};
+		return  new Class<?>[] {MvcConfig.class,SwaggerConfig.class};
 	}
 
 	@Override
@@ -29,11 +29,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 		characterEncodingFilter.setEncoding("utf-8");
 		
 		
-		
 		return new Filter[] {characterEncodingFilter};
 		
 	}
-	
-	
-
 }

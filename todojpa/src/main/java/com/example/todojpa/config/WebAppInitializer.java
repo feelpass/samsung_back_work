@@ -14,7 +14,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return  new Class<?>[] {MvcConfig.class};
+		// TODO Auto-generated method stub
+		return new Class<?>[] {MvcConfig.class};
 	}
 
 	@Override
@@ -24,12 +25,14 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
 	@Override
 	protected Filter[] getServletFilters() {
+		CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+		encodingFilter.setEncoding("utf-8");
 		
-		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-		characterEncodingFilter.setEncoding("utf-8");
 		
 		
-		return new Filter[] {characterEncodingFilter};
-		
+		return new Filter[] {encodingFilter};
 	}
+	
+	
+
 }

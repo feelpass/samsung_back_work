@@ -15,15 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-
-
-
-
 @Configuration
-@ComponentScan(basePackages = "com.example.todojpa.controller")
 @EnableWebMvc
+@ComponentScan(basePackages = "com.example.todojpa.controller")
 public class MvcConfig implements WebMvcConfigurer {
-	
 	
 	
 
@@ -32,11 +27,13 @@ public class MvcConfig implements WebMvcConfigurer {
 		configurer.enable();
 	}
 
+
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.jsp("/WEB-INF/views/", ".jsp");
 	}
-
+	
+	
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		final Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();

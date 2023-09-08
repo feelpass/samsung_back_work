@@ -3,6 +3,7 @@ package com.example.todojpa.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +20,7 @@ public class TodoService {
 	
 	@Transactional(readOnly =  true)
 	public List<Todo> getTodos(){
-		return todoRepository.findAll();
+		return todoRepository.findAll(Sort.by("id").descending());
 	}
 	
 	@Transactional(readOnly =  true)

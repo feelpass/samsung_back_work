@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 
 @Configuration
-@ComponentScan(basePackages = "com.example.todomvc.controller")
+@ComponentScan(basePackages = "com.example.todojpa.controller")
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
 	

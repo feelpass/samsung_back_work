@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort;
 import com.example.todojpa.config.ApplicationConfig;
 import com.example.todojpa.domain.Todo;
 import com.example.todojpa.repository.TodoRepository;
-import com.example.todojpa.service.TodoService;
 
 public class TodoJpaRun {
 
@@ -32,9 +31,9 @@ public class TodoJpaRun {
 //		}
 		
 //		//2. 조회 (한 건)
-		Todo findTodo = todoRepository.findById(2L).orElseThrow();
-		
-		System.out.println(findTodo);
+//		Todo findTodo = todoRepository.findById(2L).orElseThrow();
+//		
+//		System.out.println(findTodo);
 //		
 //		//3. 조회 (여러건)
 //		List<Todo> todos = null;
@@ -54,12 +53,38 @@ public class TodoJpaRun {
 //		
 //		updateTodo.setTodo("jpa update test!!");
 		
-		TodoService todoService = context.getBean(TodoService.class);
+//		TodoService todoService = context.getBean(TodoService.class);
+//		
+//		Todo updateTodo =todoService.updateTodo(2L);
+//		System.out.println(todoRepository.findById(2L).get());
+//		
+//		
+//		//5. 삭제
+//		todoService.deleteTodo(2L);
 		
-		Todo updateTodo =todoService.updateTodo(2L);
-		System.out.println(updateTodo);
+		//6. findByTodo  
+		
+		Todo resultTodo = 	todoRepository.findByTodo("test").get();
+		
+		System.out.println(resultTodo);
+		
+		//7. findByTodoContaining 
+//		List<Todo> todos = todoRepository.findByTodoContaining("jpa");
 		
 		
+		
+		Pageable pageable = PageRequest.of(1,3, Sort.by("todo").descending());
+//		
+//		List<Todo> todos = todoRepository.findByTodoContaining("hello", pageable);
+		
+		//8. jpql을 이용한 조회 
+//		List<Todo> todos = todoRepository.findTodos("hello", pageable);
+		
+		List<Todo> todos = todoRepository.findTodos2("hello");
+		
+		for (Todo todo : todos) {
+			System.out.println(todo);
+		}
 
 	}
 

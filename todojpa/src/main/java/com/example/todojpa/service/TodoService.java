@@ -1,5 +1,8 @@
 package com.example.todojpa.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +16,25 @@ import lombok.RequiredArgsConstructor;
 public class TodoService {
 
 	private final TodoRepository todoRepository;
+	
+	@Transactional(readOnly =  true)
+	public List<Todo> getTodos(){
+		return todoRepository.findAll();
+	}
+	
+	@Transactional(readOnly =  true)
+	public Todo getTodo(Long id) {
+		return todoRepository.findById(id).get();
+	}
+	
+	@Transactional
+	public Todo addTodo(String todo) {
+		Todo todoObj = new Todo();
+		todoObj.setTodo(todo);
+		return todoRepository.save(todoObj);
+	}
+	
+	
 	@Transactional
 	public Todo updateTodo(Long id) {
 		System.out.println("service update start!!");
@@ -30,6 +52,16 @@ public class TodoService {
 		}
 		
 		return updateTodo;
+	}
+	
+	@Transactional
+	public void deleteTodo(Long id) {
+		Optional<Todo> findTodo = todoRepository.findById(id);
+		
+		if(findTodo.isEmpty())
+			return;
+		
+		todoRepository.delete(findTodo.get());
 	}
 
 }
